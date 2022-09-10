@@ -85,7 +85,7 @@ int main() {
 
     //Подсчет баллов 2-A
 
-    int n, k, m;
+    /*int n, k, m;
     cin >> n;
     int a[n + 1];
     for (int i = 1; i <= n; i ++){
@@ -113,6 +113,39 @@ int main() {
     }
 
     for (int i = 1; i <= m; i ++)
-        cout << c[i] << "\n";
+        cout << c[i] << "\n";*/
+
+    //? Великая сеча 2-B
+
+    /*int n,m;
+    cin>>n>>m;
+    if(n%2==0&&m%2==0)
+        cout<<2;
+    else
+        cout<<1;*/
+
+    //?Водостоки 2-C
+
+    //Коллекционирование этикеток 2-D
+
+    int n, k = 0;
+    cin >> n;
+    int a[n + 1];
+    for(int i = 1; i <= n; i ++)
+        cin >> a[i];
+
+    for(int i = 1; i <= n; i ++){
+        for(int j = i + 1; j < n; j ++){
+
+            while(a[i] != 0 && a[j] != 0){
+                a[i] -= 1;
+                a[j] -= 1;
+                k ++;
+            }
+
+        }
+    }
+
+    cout << k;
     return 0;
 }
