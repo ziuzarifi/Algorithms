@@ -14,6 +14,9 @@ int gcd(int a, int b) {
 
 int main() {
 
+    /*freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);*/
+
     //?Домой на электричках 1-B
 
     //Клад 1-С
@@ -126,26 +129,138 @@ int main() {
 
     //?Водостоки 2-C
 
-    //Коллекционирование этикеток 2-D
+    //?Коллекционирование этикеток 2-D
 
-    int n, k = 0;
+    /*int n, k = 0;
     cin >> n;
     int a[n + 1];
     for(int i = 1; i <= n; i ++)
         cin >> a[i];
 
+    for(int i = 1; i <= n; i ++) {
+        for (int j = 1; j < n; j++) {
+            if(a[j] < a[j + 1]) swap(a[j], a[j + 1]);
+        }
+    }
+
     for(int i = 1; i <= n; i ++){
-        for(int j = i + 1; j < n; j ++){
+        for(int j = i + 1; j <= n; j ++){
 
             while(a[i] != 0 && a[j] != 0){
-                a[i] -= 1;
-                a[j] -= 1;
+                a[i] --;
+                a[j] --;
                 k ++;
             }
 
         }
     }
 
-    cout << k;
+    cout << k;*/
+
+    //Наибольшее произведение 3-A
+
+    /*long long n, max1 = -30000, max2 = max1, max3 = max1, min1 = 30000, min2 = min1;
+    cin >> n;
+    int a;
+    for(int i = 1; i <= n; i ++) {
+        cin >> a;
+        if(a > max1){
+            max3 = max2;
+            max2 = max1;
+            max1 = a;
+        }
+        else if(a > max2){
+            max3 = max2;
+            max2 = a;
+        }
+        else if(a > max3) max3 = a;
+
+        if (a < min1){
+            min2 = min1;
+            min1 = a;
+        }
+        else if (a < min2) min2 = a;
+    }
+
+    if ((max1 > 0) && (min1 * min2 > max2 * max3)) cout << max1 * min1 * min2;
+    else cout << max1 * max2 * max3;*/
+
+    //Покупка билетов 3-B
+
+    /*int n;
+    cin >> n;
+    int a[n + 1], b[n + 1], c[n + 1], d[n + 1];
+    for(int i = 1; i <= n; i ++)
+        cin >> a[i] >> b[i] >> c[i];
+
+    d[0] = 0;
+    d[1] = a[1];
+    d[2] = min(a[1] + a[2], b[1]);
+
+    for(int i = 3; i <= n; i ++)
+        d[i] = min(d[i - 1] + a[i], min(d[i - 2] + b[i - 1], d[i - 3] + c[i - 2]));
+
+    cout << d[n];*/
+
+    //?Вырезанные фигуры 3-C
+
+    //Квадрат 3-D
+
+    /*int n, k, s;
+    cin >> n >> k >> s;
+    int a[n][n];
+    for(int i = 1; i <= k; i ++){
+        for(int j = 1; j <= k; j ++){
+            if(s != 0) {
+                a[i][j] = 1;
+                s --;
+            }
+            else a[i][j] = 0;
+        }
+    }
+
+    for(int i = k + 1; i <= n; i ++)
+        for(int j = 1; j <= k; j ++)
+            a[i][j] = a[i - k][j];
+
+    for(int i = 1; i <= k; i ++)
+        for(int j = k + 1; j <= n; j ++)
+            a[i][j] = a[i][j - k];
+
+    for(int i = k + 1; i <= n; i ++)
+        for(int j = k + 1; j <= n; j ++)
+            a[i][j] = a[i - k][j - k];
+
+    for(int i = 1; i <= n; i ++) {
+        for (int j = 1; j <= n; j++)
+            cout << a[i][j] << " ";
+        cout << "\n";
+    }*/
+
+    //Поле чудес 3-E
+
+    int n, k;
+    cin >> n;
+    int a[n];
+    for (int i = 1; i <= n; i++)
+        cin >> a[i];
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = i + 1; j <= n; j++) {
+            if (a[i] == a[j]) {
+                k = 1;
+                while (k != (j - i)) {
+                    if (a[i + k] == a[j + k]) k ++;
+                    else break;
+                }
+
+                if (k == j - i) {
+                    cout << k;
+                    return 0;
+                }
+            }
+        }
+    }
+    cout << n - 1;
     return 0;
 }
